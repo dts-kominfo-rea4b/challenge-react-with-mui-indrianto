@@ -8,9 +8,11 @@ import React, {useState} from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 
+
+
 import Divider from '@mui/material/Divider';
 import { Button, FormControl, TextField } from '@mui/material';
-import Contact from './Contact';
+
 
 const style = {
   width: '100%',
@@ -19,14 +21,17 @@ const style = {
 };
 
 
-const ContactForm = (data) => {
+const ContactForm = ({handleClick}) => {
     // Form berisi name, phone, email, dan photo url
     // Buatlah state newContact berupa objek sesuai dengan data yang ada
     const [name,setName]=useState('');
     const [phone,setPhone]=useState('');
     const [email,setEmail]=useState('');
     const [photo,setPhoto]=useState('');
-    
+    const [contacts, setContacts] = useState([]);
+
+    const newContact=[...contacts];
+
     return (
         <div className="contact-form"> 
         <List sx={style} component="nav" aria-label='Contact Form'>
@@ -58,14 +63,10 @@ const ContactForm = (data) => {
             <Divider />
             <ListItem >
                 <Button id="btnadd" onClick={()=>{
-                    const coba=[name,phone,email,photo];
-                    // newContact=[name,phone,email,photo];
-                    // console.log(name);
-                    // console.log(phone);
-                    // console.log(email);
-                    // console.log(photo);
-                    console.log(coba);
-                    Contact({coba});
+                    newContact.push({name:name,phone:phone,email:email,photo:photo});                     
+                    handleClick(newContact);
+                    setContacts([]);
+
                 }}>Add New</Button>                
             </ListItem>
         </List>                        

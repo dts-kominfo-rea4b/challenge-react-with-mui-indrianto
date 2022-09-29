@@ -23,11 +23,8 @@ const App = () => {
 
   // Buatlah handler untuk menambahkan kontak baru yang akan dikirim ke ContactForm
 const handleClick=(contact)=>{
-  setContacts([...contacts,contact]);
-    
+  setContacts([...contacts,contact]);    
   contactsJSON.push({name:contact[0].name,phone:contact[0].phone,email:contact[0].email, photo:contact[0].photo});
-  
-
 }
   return (
     <div className="App">
